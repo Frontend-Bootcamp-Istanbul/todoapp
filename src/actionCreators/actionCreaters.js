@@ -13,8 +13,12 @@ export function setTodos(todos){
 
 export function addTodo(todo){
     return (dispatch) => {
-        dispatch({type: ADD_TODO, todo});
-        dispatch(showNotification("Eklendi"));
+        if(todo.content){
+            dispatch({type: ADD_TODO, todo});
+            dispatch(showNotification(`${todo.content} Eklendi`));
+        }else {
+            dispatch(showNotification("Boş eklenemez !!!!"));
+        }
 }}
 
 export function removeTodo(id){

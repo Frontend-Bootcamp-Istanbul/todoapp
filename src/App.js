@@ -103,12 +103,14 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  activeFilter: state.activeFilter,
-  todos: state.todos,
-  notificationVisibility: state.notificationVisibility,
-  notificationText: state.notificationText
-});
+const mapStateToProps = (state) => {
+    console.log(state);
+    return {
+  activeFilter: state.todosReducer.activeFilter,
+  todos: state.todosReducer.todos,
+  notificationVisibility: state.notificationReducer.notificationVisibility,
+  notificationText: state.notificationReducer.notificationText}
+};
 
 const mapDispatchToProps = dispatch => ({
     addTodos: (todos) => {dispatch(setTodos(todos))},
